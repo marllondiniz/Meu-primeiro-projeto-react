@@ -1,19 +1,24 @@
 import React, { Component } from "react";
-import CardNota from "../CardNota/CardNota";
-
+import CardNota from "../CardNota";
+import "./estilo.css";
 class ListaDeNotas extends Component {
+ 
   render() {
     return (
-    <ul>
-      {Array.of("Trabalho", "Trabalho", "Estudos").map((categoria, index) => {
-        return (
-          <li key={index}>
-           
-           <CardNota />
-          </li>
-        );
-      })}
-    </ul>
+      <ul className="lista-notas">
+        {this.props.notas.map((nota, index) => {
+          return (
+            <li className="lista-notas_item" key={index}>
+              
+              <CardNota 
+              indice={index}
+              apagarNota={this.props.apagarNota}
+              titulo={nota.titulo} 
+              texto={nota.texto}/>
+            </li>
+          );
+        })}
+      </ul>
     );
   }
 }
